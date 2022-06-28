@@ -25,8 +25,7 @@
     checksums.tsv
     dummy_data/
     Soiled.py
-    Soiled.py
-    ## Resources used
+    Soiled_test.py
     ```
 3. edit `Soiled.py` as needed.
 
