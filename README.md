@@ -17,6 +17,69 @@
 3.  `cd` into `Soiled` folder and use `tfds build` command to build the data
 
 4. The  Tensorflow record files can be found at `C:\Users\<user>\tensorflow_datasets\soiled`. If needed, these files can be taken elsewhere to use.
+
+## loading the data
+There are multiple ways to do it. 
+1. Import the necessary packages:
+    ```
+    import tensorflow as tf
+    import tensorflow_datasets as tfds
+    import sys
+    ```
+2. Ensure that the path to `Soiled` folder containg the code NOT the data generated. For this I have added the path as follows:
+    ```
+    sys.path.insert(1, 'C:\\Users\\<user>\\Downloads\\')
+    ```
+3. Then the data can be loaded using:
+    ```
+    ds = tfds.load('Soiled')
+    ds
+    ```
+    ```
+    {'trainA': <PrefetchDataset shapes: {image: (None, None, 3), label: ()}, types: {image: tf.uint8, label: tf.int64}>,
+    'trainB': <PrefetchDataset shapes: {image: (None, None, 3), label: ()}, types: {image: tf.uint8, label: tf.int64}>,
+    'testA': <PrefetchDataset shapes: {image: (None, None, 3), label: ()}, types: {image: tf.uint8, label: tf.int64}>,
+    'testB': <PrefetchDataset shapes: {image: (None, None, 3), label: ()}, types: {image: tf.uint8, label: tf.int64}>}
+    ```
+4. test:
+    ```
+    next(iter(ds['trainA']))
+    ```
+    ```
+    Output exceeds the size limit. Open the full output data in a text editor
+    {'image': <tf.Tensor: shape=(1200, 1920, 3), dtype=uint8, numpy=
+    array([[[255, 255, 255],
+            [255, 255, 255],
+            [255, 255, 255],
+            ...,
+            [115, 173, 187],
+            [112, 174, 197],
+            [108, 172, 199]],
+    
+            [[255, 255, 255],
+            [255, 255, 255],
+            [255, 255, 255],
+            ...,
+            [119, 170, 191],
+            [115, 165, 192],
+            [117, 168, 197]],
+    
+            [[255, 255, 255],
+            [255, 255, 255],
+            [255, 255, 255],
+            ...,
+            [109, 145, 179],
+            [134, 162, 199],
+            [134, 158, 194]],
+    
+    ...
+            ...,
+            [ 72,  95,  67],
+            [ 78,  99,  66],
+            [ 79,  99,  62]]], dtype=uint8)>,
+    'label': <tf.Tensor: shape=(), dtype=int64, numpy=0>}
+    ```
+
 ## Steps used to create the folder structure.
 
 1. Install ``tensorflow_datasets`` package
