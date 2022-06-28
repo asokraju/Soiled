@@ -26,7 +26,7 @@ There are multiple ways to do it.
     import tensorflow_datasets as tfds
     import sys
     ```
-2. Ensure that the path to `Soiled` folder containg the code NOT the data generated. For this I have added the path as follows:
+2. Ensure that the path to `Soiled` folder containg the code, NOT the data generated, is accessable to the code. For this I have added the path as follows:
     ```
     sys.path.insert(1, 'C:\\Users\\<user>\\Downloads\\')
     ```
