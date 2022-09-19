@@ -1,7 +1,7 @@
 """Soiled dataset."""
 
 import tensorflow_datasets as tfds
-from . import Soiled
+import Soiled
 
 
 class SoiledTest(tfds.testing.DatasetBuilderTestCase):

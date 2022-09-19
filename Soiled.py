@@ -26,7 +26,7 @@ _CITATION = """\
   }
 """
 _DATA_OPTIONS = ["Soiled"]
-_DL_URLS = {"Soiled":"C:\\Users\\kkosara\\Downloads\\Data_001.zip"}
+_DL_URLS = {"Soiled":"C:\\Users\\kkosara\\Downloads\\FakeData_001.zip"}
 
 class SoiledConfig(tfds.core.BuilderConfig):
   """BuilderConfig for Soiled Class."""
@@ -50,10 +50,12 @@ class Soiled(tfds.core.GeneratorBasedBuilder):
   BUILDER_CONFIGS = [
       SoiledConfig(  # pylint: disable=g-complex-comprehension
           name=config_name,
-          version=tfds.core.Version("0.0.2"),
+          version=tfds.core.Version("0.0.4"),
           release_notes={
               "0.0.1": "June 27th 2022. 1.2gb",
-              "0.0.2": "Updated data on June 28th 2022. 6.8 gb  "
+              "0.0.2": "Updated data on June 28th 2022. 6.8 gb  ",
+              "0.0.3": "Updated data on Sept 19th 2022. ~8 gb  ",
+              "0.0.4": "test data on Sept 19th 2022. 11 mb  "
           },
           data=config_name,
       ) for config_name in _DATA_OPTIONS
@@ -77,12 +79,17 @@ class Soiled(tfds.core.GeneratorBasedBuilder):
     """Returns SplitGenerators."""
     url = _DL_URLS[self.builder_config.name]
     data_dirs = dl_manager.download_and_extract(url)
-
+    print("data_dirs",data_dirs)
+    print("...")
+    print("tf.io.gfile.listdir(data_dirs)[0]",tf.io.gfile.listdir(data_dirs)[0])
+    print("...")
     path_to_dataset = os.path.join(data_dirs, tf.io.gfile.listdir(data_dirs)[0])
-    train_a_path = os.path.join(data_dirs, "trainA")
-    train_b_path = os.path.join(data_dirs, "trainB")
-    test_a_path = os.path.join(data_dirs, "testA")
-    test_b_path = os.path.join(data_dirs, "testB")
+    print("data_dirs", path_to_dataset)
+
+    train_a_path = os.path.join(path_to_dataset, "trainA")
+    train_b_path = os.path.join(path_to_dataset, "trainB")
+    test_a_path = os.path.join(path_to_dataset, "testA")
+    test_b_path = os.path.join(path_to_dataset, "testB")
 
     return [
         tfds.core.SplitGenerator(
