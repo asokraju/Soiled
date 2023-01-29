@@ -93,7 +93,7 @@ There are multiple ways to do it.
 3. edit `Soiled.py` as needed.
 
 ## Possible issues:
-1. If it fails to build the pipeline, delete the folder `tesorflow_datasets` folder BEFORE you retry. In windows it can found at `C\users\<user>`.
+1. If it fails to build the pipeline, delete the folder `tesorflow_datasets` folder BEFORE you retry. In windows, it can be found at `C\users\<user>`.
 2. If it gives an error something similar to 
     ```
     # tensorflow.python.framework.errors_impl.NotFoundError: Could not find directory C:\Users\<user>\tensorflow_datasets\downloads\extracted\ZIP.Users_kkosara_Downloads_Data_18r38_Co4F-G6ka9wRk2wGFbDPqLZu8TekEV7s9L9enI.zip\testA\trainA
